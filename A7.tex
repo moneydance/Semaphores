@@ -1,0 +1,842 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{pdfpages}
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage[binary-units=true]{siunitx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\newtheoremstyle{problemstyle}  % <name>
+        {3pt}                                               % <space above>
+        {3pt}                                               % <space below>
+        {\normalfont}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries\itshape}                 % <theorem head font>
+        {\normalfont\bfseries:}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+\theoremstyle{problemstyle}
+\DeclareSIUnit[per-mode=symbol,per-symbol=p]{\Mbps}{\mega\bit\per\second}
+
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%-------------------------------------------------------------------------------
+
+\newcommand\NoIndent[1]{%
+  \begingroup
+  \par
+  \parshape0
+  #1\par
+  \endgroup
+}
+
+\newtheorem{problem}{Problem}
+
+
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment\ \#7} % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ March\ 29,\ 2016} % Due date
+\newcommand{\hmwkClass}{CS\ 350} % Course/class
+\newcommand{\hmwkClassTime}{3:00 pm} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Bestavros} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Ben Pusey} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+
+% To have just one problem per page, simply put a \clearpage after each problem
+% problem 1
+\begin{problem} ~
+\begin{enumerate}[label=(\alph*)]
+	\item This works because by setting the ticket to 1 we have replicated the choosing flag of the bakery algorithm. When 
+		a ticket is one it will be the lowest value in the tickets because every other value will either be one(i.e also setting their ticket) or the code ticket[i]:=max(ticket[0]..ticket[n-1])+1; will guarantee that the other ticket values that have been set are larger than one. The logic of the while loop will cause all the other tickets to wait on the tickets that are set to one to set their actual ticket values which is the same behavior outlined in the original bakery algorithm.
+	\item ~
+	\begin{lstlisting}
+=========================
+Thread: 3 Entering Critical Section
+Thread 3 is starting iteration 1
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 3 is done with iteration 1
+Thread: 3 Exiting Critical Section
+=========================
+
+=========================
+Thread: 2 Entering Critical Section
+Thread 2 is starting iteration 1
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 2 is done with iteration 1
+Thread: 2 Exiting Critical Section
+=========================
+
+=========================
+Thread: 1 Entering Critical Section
+Thread 1 is starting iteration 1
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 1 is done with iteration 1
+Thread: 1 Exiting Critical Section
+=========================
+
+=========================
+Thread: 0 Entering Critical Section
+Thread 0 is starting iteration 1
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 0 is done with iteration 1
+Thread: 0 Exiting Critical Section
+=========================
+
+=========================
+Thread: 3 Entering Critical Section
+Thread 3 is starting iteration 2
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 3 is done with iteration 2
+Thread: 3 Exiting Critical Section
+=========================
+
+=========================
+Thread: 2 Entering Critical Section
+Thread 2 is starting iteration 2
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 2 is done with iteration 2
+Thread: 2 Exiting Critical Section
+=========================
+
+=========================
+Thread: 1 Entering Critical Section
+Thread 1 is starting iteration 2
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 1 is done with iteration 2
+Thread: 1 Exiting Critical Section
+=========================
+
+=========================
+Thread: 0 Entering Critical Section
+Thread 0 is starting iteration 2
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 0 is done with iteration 2
+Thread: 0 Exiting Critical Section
+=========================
+
+=========================
+Thread: 3 Entering Critical Section
+Thread 3 is starting iteration 3
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 3 is done with iteration 3
+Thread: 3 Exiting Critical Section
+=========================
+
+=========================
+Thread: 2 Entering Critical Section
+Thread 2 is starting iteration 3
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 2 is done with iteration 3
+Thread: 2 Exiting Critical Section
+=========================
+
+=========================
+Thread: 1 Entering Critical Section
+Thread 1 is starting iteration 3
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 1 is done with iteration 3
+Thread: 1 Exiting Critical Section
+=========================
+
+=========================
+Thread: 0 Entering Critical Section
+Thread 0 is starting iteration 3
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 0 is done with iteration 3
+Thread: 0 Exiting Critical Section
+=========================
+
+=========================
+Thread: 3 Entering Critical Section
+Thread 3 is starting iteration 4
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 3 is done with iteration 4
+Thread: 3 Exiting Critical Section
+=========================
+
+=========================
+Thread: 2 Entering Critical Section
+Thread 2 is starting iteration 4
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 2 is done with iteration 4
+Thread: 2 Exiting Critical Section
+=========================
+
+=========================
+Thread: 1 Entering Critical Section
+Thread 1 is starting iteration 4
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 1 is done with iteration 4
+Thread: 1 Exiting Critical Section
+=========================
+
+=========================
+Thread: 0 Entering Critical Section
+Thread 0 is starting iteration 4
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 0 is done with iteration 4
+Thread: 0 Exiting Critical Section
+=========================
+
+=========================
+Thread: 3 Entering Critical Section
+Thread 3 is starting iteration 5
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 3 is done with iteration 5
+Thread: 3 Exiting Critical Section
+=========================
+
+=========================
+Thread: 2 Entering Critical Section
+Thread 2 is starting iteration 5
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 2 is done with iteration 5
+Thread: 2 Exiting Critical Section
+=========================
+
+=========================
+Thread: 1 Entering Critical Section
+Thread 1 is starting iteration 5
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 1 is done with iteration 5
+Thread: 1 Exiting Critical Section
+=========================
+
+=========================
+Thread: 0 Entering Critical Section
+Thread 0 is starting iteration 5
+We hold these truths to be self-evident, that all men are created equal,
+that they are endowed by their Creator with certain unalienable Rights,
+that among these are Life, Liberty and the pursuit of Happiness.
+Thread 0 is done with iteration 5
+Thread: 0 Exiting Critical Section
+=========================	
+\end{lstlisting}
+\end{enumerate}
+\end{problem}
+% problem 2
+\begin{problem} ~
+\begin{enumerate}[label=(\alph*)]
+	\item The semaphore should be initialized to 0. The code works because when a process arrives it signals its semaphore adding one to the semaphores value. Thus if a process is waiting on the semaphore that was signaled it will unblock and then signal the semaphore again allowing another request to become unblocked. If no processes were waiting on the semaphore then the semaphores resource will increase to one so that when a process does wait on it it will not be blocked. The code has a sort of domino effect where the process i arriving allows for all the processes waiting on i to unblock.
+	\item No it could not. If their are N processes the original code in a. results in a total of N+1 signals and N waits. Thus if the original value of the semaphores is 0 then the final value of the semaphores will be 1 upon finishing the rendezvous code which means the semaphore will not block.
+	\item The final instruction is included to reset the semaphores to their original state of zero so if the data structures are used again a bug does not arise. 
+\end{enumerate}
+\end{problem}
+% problem 3
+\begin{problem}~\\\\
+\textbf {Note: Ran the tests on CSA2 to get consistent results. Process 0 requests service at a lower rate than the other processes. When a processes leaves the critical section and chooses the next process I print out the Process Request Priorities. Depending on what is being prioritized the priority list will be maximized or minimized.}
+\begin{enumerate}[label=(\alph*)]
+	\item I split my code into two data structures. I have a PriorityProcess class and a PrioritySemaphore class. The Process class is responsible for executing its critical code a number of N times. All Priority Processes share the same instance of the PrioritySemaphore which keeps track of which process should enter the critical section next and which process should be blocked. It does this by keeping a list of priority values that correspond to instances of the PriorityProcess class. When a process is finished leaving the critical section the PrioritySemaphore chooses the process with the next highest priority and signals a binary semaphore that is associated with the process. The process whose binary semaphore was signaled arrived when another process was in the critical section. As a result the process was made to wait on its binary semaphore and was blocked as it's semaphore's value is initialized to 0. When that binary semaphore is finally signaled its process resumes its operation and enters the critical section.
+	\item ~
+\begin{lstlisting}
+Process: 4 Requesting Critical Section
+Process: 4 Entering Critical Section
+Process: 3 Requesting Critical Section
+Process: 2 Requesting Critical Section
+Process: 1 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0)
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (1, 1.0) (2, 2.0)
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 0.0) (2, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 0.0) (1, 1.0)
+Process: 1 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 0.0)
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+\end{lstlisting}
+	\item ~
+\begin{lstlisting}
+Process: 4 Requesting Critical Section
+Process: 4 Entering Critical Section
+Process: 3 Requesting Critical Section
+Process: 2 Requesting Critical Section
+Process: 1 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 0.0) (1, 0.0) (2, 0.0) (3, 0.0)
+Process: 4 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 0.0) (2, 0.0) (3, 0.0) (4, 1.0)
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (2, 0.0) (3, 0.0) (4, 1.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 1.0) (3, 0.0) (4, 1.0)
+Process: 2 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 1.0) (2, 1.0) (4, 1.0)
+Process: 3 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (2, 1.0) (3, 1.0) (4, 1.0)
+Process: 1 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 1.0) (1, 2.0) (3, 1.0) (4, 1.0)
+Process: 2 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 2.0) (2, 2.0) (3, 1.0) (4, 1.0)
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 2.0) (2, 2.0) (4, 1.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 2.0) (2, 2.0) (3, 2.0)
+Process: 4 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (2, 2.0) (3, 2.0) (4, 2.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 3.0) (3, 2.0) (4, 2.0)
+Process: 2 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 3.0) (2, 3.0) (4, 2.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 3.0) (2, 3.0) (3, 3.0)
+Process: 4 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 2.0) (2, 3.0) (3, 3.0) (4, 3.0)
+Process: 1 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (1, 4.0) (2, 3.0) (3, 3.0) (4, 3.0)
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 4.0) (3, 3.0) (4, 3.0)
+Process: 2 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 3.0) (1, 4.0) (2, 4.0) (4, 3.0)
+Process: 3 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 4.0) (2, 4.0) (3, 4.0) (4, 3.0)
+Process: 4 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 4.0) (2, 4.0) (3, 4.0)
+Process: 4 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (2, 4.0) (3, 4.0) (4, 4.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 5.0) (3, 4.0) (4, 4.0)
+Process: 2 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 4.0) (1, 5.0) (2, 5.0) (4, 4.0)
+Process: 3 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 5.0) (2, 5.0) (3, 5.0) (4, 4.0)
+Process: 4 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 5.0) (2, 5.0) (3, 5.0)
+Process: 4 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (2, 5.0) (3, 5.0) (4, 5.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 6.0) (3, 5.0) (4, 5.0)
+Process: 2 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 6.0) (2, 6.0) (4, 5.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 6.0) (2, 6.0) (3, 6.0)
+Process: 4 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 5.0) (2, 6.0) (3, 6.0) (4, 6.0)
+Process: 1 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (1, 7.0) (2, 6.0) (3, 6.0) (4, 6.0)
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 7.0) (3, 6.0) (4, 6.0)
+Process: 2 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 7.0) (2, 7.0) (4, 6.0)
+Process: 3 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 6.0) (1, 7.0) (2, 7.0) (3, 7.0)
+Process: 4 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 7.0) (2, 7.0) (3, 7.0) (4, 7.0)
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (2, 7.0) (3, 7.0) (4, 7.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 8.0) (3, 7.0) (4, 7.0)
+Process: 2 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 8.0) (2, 8.0) (4, 7.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 8.0) (2, 8.0) (3, 8.0)
+Process: 4 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (2, 8.0) (3, 8.0) (4, 8.0)
+Process: 1 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 9.0) (3, 8.0) (4, 8.0)
+Process: 2 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 7.0) (1, 9.0) (2, 9.0) (4, 8.0)
+Process: 3 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 9.0) (2, 9.0) (3, 9.0) (4, 8.0)
+Process: 4 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 9.0) (2, 9.0) (3, 9.0)
+Process: 4 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (2, 9.0) (3, 9.0) (4, 9.0)
+Process: 2 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (3, 9.0) (4, 9.0)
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (4, 9.0)
+Process: 4 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+\end{lstlisting}
+\item~
+\begin{lstlisting}
+Process: 4 Requesting Critical Section
+Process: 4 Entering Critical Section
+Process: 3 Requesting Critical Section
+Process: 2 Requesting Critical Section
+Process: 1 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 4.0) (1, 3.0) (2, 2.0) (3, 1.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 4.0) (1, 3.0) (2, 2.0) (4, 5.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 4.0) (1, 3.0) (3, 6.0) (4, 5.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 4.0) (2, 7.0) (3, 6.0) (4, 5.0)
+Process: 1 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 8.0) (2, 7.0) (3, 6.0) (4, 5.0)
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 8.0) (2, 7.0) (3, 6.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (1, 8.0) (2, 7.0) (4, 9.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 8.0) (3, 10.0) (4, 9.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (2, 11.0) (3, 10.0) (4, 9.0)
+Process: 1 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 12.0) (2, 11.0) (3, 10.0)
+Process: 4 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 14.0) (1, 12.0) (2, 11.0) (4, 13.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 14.0) (1, 12.0) (3, 15.0) (4, 13.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 14.0) (2, 16.0) (3, 15.0) (4, 13.0)
+Process: 1 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 14.0) (1, 17.0) (2, 16.0) (3, 15.0)
+Process: 4 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 17.0) (2, 16.0) (3, 15.0) (4, 18.0)
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (1, 17.0) (2, 16.0) (4, 18.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 17.0) (3, 19.0) (4, 18.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (2, 20.0) (3, 19.0) (4, 18.0)
+Process: 1 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 22.0) (1, 21.0) (2, 20.0) (3, 19.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 22.0) (1, 21.0) (2, 20.0) (4, 23.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 22.0) (1, 21.0) (3, 24.0) (4, 23.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 22.0) (2, 25.0) (3, 24.0) (4, 23.0)
+Process: 1 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 26.0) (2, 25.0) (3, 24.0) (4, 23.0)
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 26.0) (2, 25.0) (3, 24.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (1, 26.0) (2, 25.0) (4, 27.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 26.0) (3, 28.0) (4, 27.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (2, 29.0) (3, 28.0) (4, 27.0)
+Process: 1 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (0, 31.0) (1, 30.0) (2, 29.0) (3, 28.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 31.0) (1, 30.0) (2, 29.0) (4, 32.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 31.0) (1, 30.0) (3, 33.0) (4, 32.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 31.0) (2, 34.0) (3, 33.0) (4, 32.0)
+Process: 1 Requesting Critical Section
+Process: 0 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (1, 35.0) (2, 34.0) (3, 33.0) (4, 32.0)
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 35.0) (2, 34.0) (3, 33.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (1, 35.0) (2, 34.0) (4, 36.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 35.0) (3, 37.0) (4, 36.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (2, 38.0) (3, 37.0) (4, 36.0)
+Process: 1 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 39.0) (2, 38.0) (3, 37.0)
+Process: 4 Requesting Critical Section
+Process: 0 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (0, 41.0) (1, 39.0) (2, 38.0) (4, 40.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (0, 41.0) (1, 39.0) (3, 42.0) (4, 40.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests: (0, 41.0) (2, 43.0) (3, 42.0) (4, 40.0)
+Process: 1 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests: (0, 41.0) (1, 44.0) (2, 43.0) (3, 42.0)
+Process: 0 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests: (1, 44.0) (2, 43.0) (3, 42.0)
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests: (1, 44.0) (2, 43.0)
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests: (1, 44.0)
+Process: 1 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+Process: 0 Requesting Critical Section
+Process: 0 Entering Critical Section
+Process: 0 Exiting Critical Section
+\end{lstlisting}
+\item Starvation is an issue for the semaphores implemented in part a. If Higher priority requests keep arriving then lower priority requests will never be serviced. For c and d their is a bound on the number of out of order requests. For c the bound is the number of times it takes processes with lower critical section counts to catch up to the process with the highest critical section count. If one process enters the critical section N times concurrently and then requests for other processes come in. The initial process will have to wait for the other processes to reach N. For part d the upper bound is zero as a fifo queue is implemented so no process will ever jump ahead of another.
+\end{enumerate}
+\end{problem}
+\newpage
+% problem 4
+\begin{problem}~\\\\
+	\begin{lstlisting}[breaklines]
+Process: 0 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests Priority: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0) Requests Arrival: (0, 12.0) (1, 10.0) (2, 9.0) (4, 11.0) Out of Order Count: (0, 0.0) (1, 1.0) (2, 1.0) (3, 0.0) (4, 0.0)
+Process: 3 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 3 Entering Critical Section. Requests Priority: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0) Requests Arrival: (0, 12.0) (1, 10.0) (2, 9.0) (3, 13.0) Out of Order Count: (0, 1.0) (1, 2.0) (2, 2.0) (3, 0.0) (4, 0.0)
+Process: 4 Requesting Critical Section
+Process: 3 Exiting Critical Section
+Process: 2 Entering Critical Section. Requests Priority: (0, 0.0) (1, 1.0) (2, 2.0) (4, 4.0) Requests Arrival: (0, 12.0) (1, 10.0) (2, 9.0) (4, 14.0) Out of Order Count: (0, 1.0) (1, 2.0) (2, 0.0) (3, 0.0) (4, 0.0)
+Process: 3 Requesting Critical Section
+Process: 2 Exiting Critical Section
+Process: 1 Entering Critical Section. Requests Priority: (0, 0.0) (1, 1.0) (3, 3.0) (4, 4.0) Requests Arrival: (0, 12.0) (1, 10.0) (3, 15.0) (4, 14.0) Out of Order Count: (0, 1.0) (1, 0.0) (2, 0.0) (3, 0.0) (4, 0.0)
+Process: 2 Requesting Critical Section
+Process: 1 Exiting Critical Section
+Process: 4 Entering Critical Section. Requests Priority: (0, 0.0) (2, 2.0) (3, 3.0) (4, 4.0) Requests Arrival: (0, 12.0) (2, 16.0) (3, 15.0) (4, 14.0) Out of Order Count: (0, 2.0) (1, 0.0) (2, 0.0) (3, 0.0) (4, 0.0)
+Process: 1 Requesting Critical Section
+Process: 4 Exiting Critical Section
+Process: 0 Entering Critical Section. Requests Priority: (0, 0.0) (1, 1.0) (2, 2.0) (3, 3.0) Requests Arrival: (0, 12.0) (1, 17.0) (2, 16.0) (3, 15.0) Out of Order Count: (0, 0.0) (1, 0.0) (2, 0.0) (3, 0.0) (4, 0.0)
+Process: 4 Requesting Critical Section
+Process: 0 Exiting Critical Section
+\end{lstlisting}
+		
+We can see from this log that process zero never waits more than 2 out of order counts. I define something as out of order if the process with a higher arrival value jumps ahead of a process with a lower arrival value. Whenever a process count gets to 2 the system switches from maximizing a processes priority value and instead minimizes its arrival value. Essentially whenever two out of order processes enter the critical section the system switches from the priority algorithm we used in 3a to the fifo system we used in 3d.
+
+\end{problem}
+\end{document}
